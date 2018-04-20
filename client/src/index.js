@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import Containers from './Containers';
+import Providers from './js/Providers';
+import {Route} from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Providers><Route path="/" component={Containers} />
+</Providers>, document.getElementById('root'));
 registerServiceWorker();
