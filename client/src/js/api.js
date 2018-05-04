@@ -1,5 +1,10 @@
-export const apiURL =(process.env.NODE_ENV ==='production')
-  ?'YOUR_URL_FOR_PROD'
-  :(process.env.NODE_ENV ==='staging')
-  ?'YOUR_URL_FOR_PROD'
-  :'http://localhost:8080/YOUR_END_POINT'
+const {REACT_APP_API_URL,REACT_APP_DEV_API_URL,NODE_ENV,REACT_APP_STAGING_API_URL,REACT_APP_PROD_ENV} = process.env
+
+const setUrl = (REACT_APP_PROD_ENV === 'true')
+?REACT_APP_API_URL
+:REACT_APP_STAGING_API_URL
+
+
+export const apiURL =(NODE_ENV ==='production')
+?apiURL+'ENDPOINT'
+:REACT_APP_DEV_API_URL+'ENDPOINT'
