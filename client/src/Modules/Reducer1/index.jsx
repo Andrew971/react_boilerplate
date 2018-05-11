@@ -3,7 +3,7 @@ const initialState = {
   state: '0',
 };
 
-export function Reducer(state = initialState, action) {
+export function Reducer1(state = initialState, action) {
   switch (action.type) {
       case 'CHANGE_LANG':
           return  {

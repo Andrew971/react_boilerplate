@@ -1,29 +1,33 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './styles.css'
-import logo from '../Assets/logo.svg';
+import Main from './Main';
+import {ThemeProvider} from 'styled-components';
+import Modal from '../Content/Modal'
+import Portal from '../js/portal'
 
 class Containers extends Component {
 
   render() {
+    const {Theme,modalDisplay} =this.props
     return (
+      <ThemeProvider theme={Theme}>
+        <div>
+<Main />
+  {modalDisplay && <Portal>
+    <Modal />
+  </Portal> }
+</div>
+      </ThemeProvider>
 
-      <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo"/>
-        <h1 className="App-title">Welcome to React</h1>
-      </header>
-      <p className="App-intro">
-        To get started, edit
-        <code>src/App.js</code>
-        and save to reload.
-      </p>
-    </div>
 );
   }
 }
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    Theme: state.UI.Theme,
+    modalDisplay: state.UI.modalDisplay,
+  };
 };
 
 export default connect(mapStateToProps)(Containers);
