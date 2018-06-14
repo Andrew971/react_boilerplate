@@ -3,7 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mailer = require('express-mailer');
 
+mailer.extend(app, {
+  from: 'YOUR_EMAIL',
+  host: 'smtp.gmail.com', // hostname
+  secureConnection: true, // use SSL
+  port: 465, // port for secure SMTP
+  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+  auth: {
+    user: 'USER',
+    pass: 'PASSWORD'
+  }
+});
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
